@@ -276,7 +276,7 @@
 
 
 				<!-- 分页开始 -->
-				<nav aria-label="Page navigation">
+			<nav aria-label="Page navigation">
 				<ul class="pagination pagination-lg">
 					<li><c:if test="${pageBean.pageIndex==1}">
 							<li class="disabled"><a href="javascript:void(0);"
@@ -287,15 +287,18 @@
 								href="${pageContext.request.contextPath}/student?method=pageList&pageIndex=${pageBean.pageIndex -1 }"
 								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 							</a>
-						</c:if></li>
+						</c:if>
+					</li>
 					<c:forEach begin="1" end="${pageBean.totalPage }" var="page">
 						<c:if test="${pageBean.pageIndex!=page }">
-							<li><a
-								href="${pageContext.request.contextPath}/student?method=pageList&pageIndex=${page }">${page }</a></li>
+							<li>
+							   <a href="${pageContext.request.contextPath}/student?method=pageList&pageIndex=${page }">${page }</a>
+							</li>
 						</c:if>
 						<c:if test="${pageBean.pageIndex==page }">
-							<li class="active"><a
-								href="${pageContext.request.contextPath}/student?method=pageList&pageIndex=${page }">${page }</a></li>
+							<li class="active">
+							   <a href="${pageContext.request.contextPath}/student?method=pageList&pageIndex=${page }">${page }</a>
+							</li>
 						</c:if>
 					</c:forEach>
 					<li><c:if test="${pageBean.pageIndex==pageBean.totalPage}">
@@ -307,9 +310,10 @@
 								href="${pageContext.request.contextPath}/student?method=pageList&pageIndex=${pageBean.pageIndex +1 }"
 								aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 							</a>
-						</c:if></li>
+						</c:if>
+					</li>
 				</ul>
-				</nav>
+			</nav>
 				<!-- 分页结束 -->
 
 

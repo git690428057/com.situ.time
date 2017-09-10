@@ -9,7 +9,6 @@ import java.util.List;
 
 import POJO.Manager;
 import POJO.Student;
-import vo.PageBean;
 import vo.selectCondition;
 
 public class StudentDaoMysqlImpl implements IStudentDao {
@@ -337,8 +336,7 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 		List<Student> list = new ArrayList<Student>();
 		try {
 			connection = DBUtil.getConnection();
-			String sql = "SELECT student.id,student.name,student.age,student.gender,student.address,student.birthday,classes.name FROM student INNER JOIN classes on student.classid=classes.id limit ?,?";
-//			String sql = "select * from student limit ?,?";
+			String sql = "SELECT student.*,classes.name FROM student INNER JOIN classes on student.classid=classes.id limit ?,?";
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, index);
 			preparedStatement.setInt(2, pageSize);

@@ -139,11 +139,11 @@ public class StudentServlet extends baseServlet.BaseServlet {
 	}
 
 	// 查看全部学生信息
-	private void findAllStudent(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		List<Student> list = studentServers.selectAll();
-		req.setAttribute("list", list);
-		req.getRequestDispatcher("/jsp/student_list.jsp").forward(req, resp);
-	}
+//	private void findAllStudent(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+//		List<Student> list = studentServers.selectAll();
+//		req.setAttribute("list", list);
+//		req.getRequestDispatcher("/jsp/student_list.jsp").forward(req, resp);
+//	}
 
 	// 分页封装结果集
 	private void pageList(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
