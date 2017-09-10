@@ -24,33 +24,6 @@
 </head>
 <body>
 
-	<%-- 	</form>
-	<%
-		List<Student> list = (List<Student>) request.getAttribute("student");
-	%>
-	<form action="/qw/updateStudent.do" method="post">
-		<%
-			for (Student student : list) {
-		%>
-		id<input type="text" value="<%=student.getId()%>" name="id"><br>
-		姓名<input type="text" value="<%=student.getAge()%>" name="name"><br>
-		年龄<input type="text" value="<%=student.getAge()%>" name="age"><br>
-		性别<input type="text" value="<%=student.getGender()%>" name="gender"><br>
-		地址<input type="text" value="<%=student.getAddress()%>" name="address"><br>
-		生日<input type="text" value="<%=student.getBirthday()%>"
-			name="birthday"><br>
-		<%
-			}
-		%>
-		<input type="submit" value="确认修改">
-	</form> --%>
-
-
-
-	<%-- <%
-		List<Student> list = (List<Student>) request.getAttribute("list");
-	%> --%>
-
 
 
 <!--头部导航条开始-->
@@ -149,9 +122,6 @@
 
 	<form class="form-horizontal" action="${pageContext.request.contextPath}/student?method=updateStudent"
 		method="post">
-		<%-- <%
-			for (Student student : list) {
-		%> --%>
 		<c:forEach items="${list }" var="student">
 	
 		<div class="form-group">
@@ -204,9 +174,6 @@
 			</div>
 		</div>
 		</c:forEach>
-		<%-- <%
-			}
-		%> --%>
 		<button type="submit" >确认修改</button>
 	</form>
 

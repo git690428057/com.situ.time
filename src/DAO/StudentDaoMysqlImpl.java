@@ -63,14 +63,16 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 		int result = 0;
 		try {
 			connection = DBUtil.getConnection();
-			String sql = "update student set name = ?,age = ?, gender = ?,address = ?,birthday = ?  where id=?";
+			String sql=
+					"update student INNER JOIN classes on student.classid=classes.id set student.name = ?,student.age = ?, student.gender =?,student.address = ?,student.birthday = ?,classes.name=? where student.id=?";
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, student.getName());
 			preparedStatement.setInt(2, student.getAge());
 			preparedStatement.setString(3, student.getGender());
 			preparedStatement.setString(4, student.getAddress());
 			preparedStatement.setDate(5, new java.sql.Date(student.getBirthday().getTime()));
-			preparedStatement.setInt(6, student.getId());
+			preparedStatement.setString(6, student.getClassName());
+			preparedStatement.setInt(7, student.getId());
 			result = preparedStatement.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -80,33 +82,6 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 		return result;
 	}
 
-	@Override
-	// **********************查看全部学生信息方法**********************
-	public List<Student> selectAll() {
-		List<Student> studentsList = new ArrayList<Student>();
-		try {
-			connection = DBUtil.getConnection();
-			String sql="SELECT student.id,student.name,student.age,student.gender,student.address,student.birthday,classes.name FROM student INNER JOIN classes on student.classid=classes.id";
-			preparedStatement = connection.prepareStatement(sql);
-			resultSet = preparedStatement.executeQuery();
-			while (resultSet.next()) {
-				int id = resultSet.getInt("student.id");
-				String name = resultSet.getString("student.name");
-				int age = resultSet.getInt("student.age");
-				String gender = resultSet.getString("student.gender");
-				String address = resultSet.getString("student.address");
-				String className = resultSet.getString("classes.name");
-				Student student = new Student(id, name, age, gender, address, new Date(),className);
-				studentsList.add(student);
-				}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBUtil.close(connection, preparedStatement, resultSet);
-			System.out.println();
-		}
-		return studentsList;
-	}
 
 	@Override
 	// **********************查看指定id的学生信息**********************

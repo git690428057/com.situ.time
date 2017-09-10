@@ -10,8 +10,6 @@ import vo.PageBean;
 import vo.selectCondition;
 
 public interface IStudentServers {
-	// 查找所有学生信息
-	List<Student> selectAll();
 
 	// 删除指定id学生
 	int deleteById(int id);

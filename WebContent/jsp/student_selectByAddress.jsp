@@ -21,13 +21,7 @@
 </style>
 </head>
 <body>
-	<%-- <%
-		List<Student> list = (List<Student>) request.getAttribute("list");
-	%> --%>
 	<form class="form-horizontal" action="${pageContext.request.contextPath}/student?method=pageList" method="post">
-		<%-- <%
-			for (Student student : list) {
-		%> --%>
 		<c:forEach var="student" items="${list }">
 		<div class="form-group">
 			<label class="col-sm-2 control-label">id</label>
@@ -72,11 +66,7 @@
 			</div>
 		</div>
 		</c:forEach>
-		<%-- <%
-			}
-		%> --%>
 		<button type="submit" class="a btn btn-default">返回学生列表主页</button>
-		<!-- <input type="submit" value="返回学生列表主页"> -->
 	</form>
 
 

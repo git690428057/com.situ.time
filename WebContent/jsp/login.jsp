@@ -53,13 +53,5 @@
 			</div>
 		</div>
 		
-		
-<!-- 		
-	</form>
-	<form action="/qw/loginServlet" method="post">
-		用户名:<input type="text" name="userName"> 密码:<input
-			type="password" name="password"><br>
-		<button type="submit" class="btn btn-success">登陆</button>
-	</form> -->
 </body>
 </html>

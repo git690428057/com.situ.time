@@ -15,8 +15,6 @@ public interface IStudentDao {
 	// 更新学生信息
 	public int update(Student student);
 
-	// 查找所有学生信息
-	public List<Student> selectAll();
 
 	// 删除指定id学生
 	public int deleteById(int id);

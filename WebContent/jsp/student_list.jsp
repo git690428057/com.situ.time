@@ -225,9 +225,6 @@
 <!-- 批量删除学生按钮 执行JS:deleteAll()方法-->
 	<button onclick="deleteAll();" class="btn btn-primary btn-lg">批量删除</button>
 				<!-- bootstrap列表展示数据库所有学生信息 -附删除(直接执行deleteStudent方法)和修改(提取当前id的学生信息转发到jsp页面toUpdateStudent)按钮 -->
-				<%-- <%
-		List<Student> list = (List<Student>) request.getAttribute("list1");
-	%> --%>
 				<form id="mainForm" action="" method="post">
 					<table class="table table-hover table-bordered">
 						<tr>
@@ -243,9 +240,6 @@
 							<td colspan="2">操作选择</td>
 						</tr>
 						<c:forEach var="student" items="${list }">
-							<%-- <%
-			for (Student student : list) {
-		%> --%>
 							<tr>
 								<td><input type="checkbox" name="selectIds"
 									value="${student.id }"></td>
@@ -264,9 +258,6 @@
 										type="button" value="修改" class="btn btn-info"></a></td>
 							</tr>
 						</c:forEach>
-						<%-- <%
-			}
-		%> --%>
 					</table>
 				</form>
 

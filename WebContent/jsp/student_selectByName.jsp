@@ -21,18 +21,8 @@
 </style>
 </head>
 <body>
-<!-- EL&JSTL表达式 
-${pageContext.request.contextPath}-----项目目录
-<c:forEach var="student" items="${student_Name }"> </c:forEach>----遍历取得的(${student_Name })集合 并var="student" 集合里的值${student.key }
--->
-	<%-- <%
-		List<Student> list = (List<Student>) request.getAttribute("list");
-	%> --%>
 
 	<form class="form-horizontal" action="${pageContext.request.contextPath}/student?method=pageList" method="post">
-		<%-- <%
-			for (Student student : list) {
-		%> --%>
 		<c:forEach var="student" items="${list }">
 		<div class="form-group">
 			<label class="col-sm-2 control-label">id</label>
@@ -77,34 +67,9 @@ ${pageContext.request.contextPath}-----项目目录
 			</div>
 		</div>
 		</c:forEach>
-		<%-- <%
-			}
-		%> --%>
 		<button type="submit" class="a btn btn-default">返回学生列表主页</button>
-		<!-- <input type="submit" value="返回学生列表主页"> -->
 	</form>
 
 
-
-	<%-- 
-
-	<%
-		List<Student> list = (List<Student>) request.getAttribute("student_Name");
-	%>
-	<form action="/qw/findall.do" method="post">
-		<%
-			for (Student student : list) {
-		%>
-		id<input type="text" value="<%=student.getId()%>"><br>
-		姓名<input type="text" value="<%=student.getAge()%>"><br>
-		年龄<input type="text" value="<%=student.getAge()%>" ><br>
-		性别<input type="text" value="<%=student.getGender()%>" ><br>
-		地址<input type="text" value="<%=student.getAddress()%>" ><br>
-		生日<input type="text" value="<%=student.getBirthday()%>"><br>
-		<%
-			}
-		%>
-		<input type="submit" value="返回学生列表主页">
-	</form> --%>
 </body>
 </html>

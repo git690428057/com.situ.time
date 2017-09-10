@@ -16,12 +16,6 @@ import vo.selectCondition;
 
 public class StudentServerImpl implements IStudentServers {
 	private IStudentDao studentDao = new StudentDaoMysqlImpl();
-
-	// 查看全部学生信息
-	public List<Student> selectAll() {
-		return studentDao.selectAll();
-	}
-
 	// 删除指定id学生
 	public int deleteById(int id) {
 		return studentDao.deleteById(id);

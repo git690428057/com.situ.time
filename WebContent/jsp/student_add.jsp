@@ -166,23 +166,5 @@
 
 
 
-
-
-
-
-
-
-
-
-
-	<!-- <form action="/qw/addStudent.do" method="post">
-		姓名<input type="text" value="" name="name"><br> 年龄<input
-			type="text" value="" name="age"><br> 性别<input
-			type="text" value="" name="gender"><br> 地址<input
-			type="text" value="" name="address"><br> 生日<input
-			type="text" value="" name="birthday"><br> <input
-			type="submit" value="添加">
-	</form> -->
-
 </body>
 </html>
