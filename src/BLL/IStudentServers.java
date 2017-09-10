@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 import DIYexception.NameRepeatE;
+import POJO.ClassRoom;
+import POJO.Course;
 import POJO.Manager;
 import POJO.Student;
 import vo.PageBean;
@@ -43,5 +45,11 @@ public interface IStudentServers {
 
 	// 批量删除
 	void deleteAll(String[] ids);
+
+	// 展示班级列表方法
+	List<ClassRoom> getClassInformation();
+
+	// 展示班级_课程列表方法
+	List<Course> getClass_CourseInformation();
 
 }

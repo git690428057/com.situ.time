@@ -18,7 +18,7 @@ public class LoginOut extends HttpServlet {
 		}else {
 			System.out.println("session已经过期");
 		}
-		resp.sendRedirect(req.getContextPath()+"/html/login.html");
+		resp.sendRedirect(req.getContextPath()+"/jsp/login.jsp");
 	}
 	
 

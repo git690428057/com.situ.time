@@ -6,6 +6,8 @@ import java.util.List;
 import DAO.IStudentDao;
 import DAO.StudentDaoMysqlImpl;
 import DIYexception.NameRepeatE;
+import POJO.ClassRoom;
+import POJO.Course;
 import POJO.Manager;
 import POJO.Student;
 import vo.PageBean;
@@ -13,6 +15,7 @@ import vo.selectCondition;
 
 public class StudentServerImpl implements IStudentServers {
 	private IStudentDao studentDao = new StudentDaoMysqlImpl();
+
 	// 删除指定id学生
 	public int deleteById(int id) {
 		return studentDao.deleteById(id);
@@ -84,6 +87,18 @@ public class StudentServerImpl implements IStudentServers {
 		for (String string : ids) {
 			studentDao.deleteById(Integer.parseInt(string));
 		}
+	}
+
+	// 展示班级列表方法
+	@Override
+	public List<ClassRoom> getClassInformation() {
+		return studentDao.getClassInformation();
+	}
+
+	// 展示班级_课程列表方法
+	@Override
+	public List<Course> getClass_CourseInformation() {
+		return studentDao.getClass_CourseInformation();
 	}
 
 }

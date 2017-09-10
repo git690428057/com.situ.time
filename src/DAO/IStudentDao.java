@@ -3,6 +3,8 @@ package DAO;
 import java.util.Date;
 import java.util.List;
 
+import POJO.ClassRoom;
+import POJO.Course;
 import POJO.Manager;
 import POJO.Student;
 import vo.PageBean;
@@ -45,5 +47,9 @@ public interface IStudentDao {
 
 	// 分页---获得数据库中信息总数
 	public int getTotalCount();
+	// 展示班级列表方法
+	public List<ClassRoom> getClassInformation();
+	// 展示班级_课程列表方法
+	public List<Course> getClass_CourseInformation();
 
 }

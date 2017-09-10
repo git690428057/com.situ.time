@@ -3,6 +3,7 @@ package BLL;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DIYexception.NameRepeatE;
+import POJO.ClassRoom;
+import POJO.Course;
 import POJO.Student;
 import vo.PageBean;
 import vo.selectCondition;
@@ -26,11 +29,13 @@ public class StudentServlet extends baseServlet.BaseServlet {
 		String age = req.getParameter("age");
 		String gender = req.getParameter("gender");
 		String address = req.getParameter("address");
-		selectCondition searchCondition = new selectCondition(id, name, age, gender, address);
+		String startBirthday = req.getParameter("startBirthday");
+		String endBirthday = req.getParameter("endBirthday");
+		String className = req.getParameter("className");
+		selectCondition searchCondition = new selectCondition(id, name, age, gender, address,startBirthday,endBirthday,className);
 		List<Student> list = studentServers.searchByCondition(searchCondition);
-		req.setAttribute("list", searchCondition);
 		req.setAttribute("list", list);
-		req.getRequestDispatcher("/jsp/student_list.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/JSP/student_list.jsp").forward(req, resp);
 	}
 
 	// 查询指定出生日期区间学生信息
@@ -103,7 +108,8 @@ public class StudentServlet extends baseServlet.BaseServlet {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		Student student = new Student(name, Integer.parseInt(age), gender, address, date,className,Integer.parseInt(id));
+		Student student = new Student(name, Integer.parseInt(age), gender, address, date, className,
+				Integer.parseInt(id));
 		studentServers.update(student);
 		resp.sendRedirect("/qw/student?method=pageList");
 	}
@@ -138,7 +144,6 @@ public class StudentServlet extends baseServlet.BaseServlet {
 		resp.sendRedirect("/qw/student?method=pageList");
 	}
 
-
 	// 分页封装结果集
 	private void pageList(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		String PageIndexStr = req.getParameter("pageIndex");
@@ -155,7 +160,7 @@ public class StudentServlet extends baseServlet.BaseServlet {
 		List<Student> list = pageBean.getList();
 		req.setAttribute("pageBean", pageBean);
 		req.setAttribute("list", list);
-		req.getRequestDispatcher("/jsp/student_list.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/JSP/student_list.jsp").forward(req, resp);
 	}
 
 	// 批量删除
@@ -166,9 +171,29 @@ public class StudentServlet extends baseServlet.BaseServlet {
 	}
 
 	private void getAddPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/jsp/student_add.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/JSP/student_add.jsp").forward(req, resp);
 	}
+
 	private void getSercherPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getRequestDispatcher("/jsp/student_sercher.jsp").forward(req, resp);
 	}
+
+
+	// 展示班级列表方法
+	private void getClassInformation(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		List<ClassRoom> list = new ArrayList<ClassRoom>();
+		list = studentServers.getClassInformation();
+		req.setAttribute("list", list);
+		req.getRequestDispatcher("/WEB-INF/JSP/classInformation.jsp").forward(req, resp);
+	}
+	// 展示班级_课程列表方法
+	private void getClass_CourseInformation(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		List<Course> list = new ArrayList<Course>();
+		list = studentServers.getClass_CourseInformation();
+		req.setAttribute("list", list);
+		req.getRequestDispatcher("/WEB-INF/JSP/class_courseInformation.jsp").forward(req, resp);
+	}
+
 }

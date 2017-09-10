@@ -8,6 +8,28 @@ public class selectCondition implements Serializable{
 	private String age;
 	private String gender;
 	private String address;
+	private String startBirthday;
+	private String endBirthday;
+	private String className;
+	
+	public String getStartBirthday() {
+		return startBirthday;
+	}
+	public void setStartBirthday(String startBirthday) {
+		this.startBirthday = startBirthday;
+	}
+	public String getEndBirthday() {
+		return endBirthday;
+	}
+	public void setEndBirthday(String endBirthday) {
+		this.endBirthday = endBirthday;
+	}
+	public String getClassName() {
+		return className;
+	}
+	public void setClassName(String className) {
+		this.className = className;
+	}
 	public String getId() {
 		return id;
 	}
@@ -39,23 +61,26 @@ public class selectCondition implements Serializable{
 		this.address = address;
 	}
 	public selectCondition() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
-	public selectCondition(String id, String name, String age, String gender, String address) {
+	
+	public selectCondition(String id, String name, String age, String gender, String address, String startBirthday,
+			String endBirthday, String className) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.age = age;
 		this.gender = gender;
 		this.address = address;
+		this.startBirthday = startBirthday;
+		this.endBirthday = endBirthday;
+		this.className = className;
 	}
-	
-
 	@Override
 	public String toString() {
-		return "selectByCondition [id=" + id + ", name=" + name + ", age=" + age + ", gender=" + gender + ", address="
-				+ address + "]";
+		return "selectCondition [id=" + id + ", name=" + name + ", age=" + age + ", gender=" + gender + ", address="
+				+ address + ", startBirthday=" + startBirthday + ", endBirthday=" + endBirthday + ", className="
+				+ className + "]";
 	}
+	
 	
 }
