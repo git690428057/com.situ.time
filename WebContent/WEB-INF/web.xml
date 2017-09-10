@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<display-name></display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+
+
+	<!-- 分界线 -->
+	<servlet>
+		<servlet-name>StudentServlet</servlet-name>
+		<servlet-class>BLL.StudentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StudentServlet</servlet-name>
+		<url-pattern>/student</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- 分界线 -->
+	<servlet>
+		<servlet-name>ManagersServlet</servlet-name>
+		<servlet-class>BLL.ManagersServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ManagersServlet</servlet-name>
+		<url-pattern>/managersServlet</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	<!-- 分界线 -->
+	<servlet>
+		<servlet-name>CheckImg</servlet-name>
+		<servlet-class>login.CheckImgServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CheckImg</servlet-name>
+		<url-pattern>/checkImg</url-pattern>
+	</servlet-mapping>
+
+
+
+	<!-- 分界线 -->
+	<!-- <servlet> <servlet-name>Student</servlet-name> <servlet-class>StudentServlet.StudentContextServlet</servlet-class> 
+		</servlet> <servlet-mapping> <servlet-name>Student</servlet-name> <url-pattern>/getProperties</url-pattern> 
+		</servlet-mapping> -->
+
+	<!-- 分界线 -->
+	<!-- <servlet> <servlet-name>ConfigTest</servlet-name> <servlet-class>tests.ServletConfigTest</servlet-class> 
+		<init-param> <param-name>MaxOnline</param-name> <param-value>1个亿</param-value> 
+		</init-param> </servlet> <servlet-mapping> <servlet-name>ConfigTest</servlet-name> 
+		<url-pattern>/config</url-pattern> </servlet-mapping> -->
+
+	<!-- 分界线 -->
+	<!-- <servlet> <servlet-name>ContextText</servlet-name> <servlet-class>tests.ServletContextTest</servlet-class> 
+		<init-param> <param-name>MaxOnline</param-name> <param-value>1个亿</param-value> 
+		</init-param> </servlet> <servlet-mapping> <servlet-name>ContextText</servlet-name> 
+		<url-pattern>/context</url-pattern> </servlet-mapping> -->
+
+
+	<!-- 分界线 -->
+	<servlet>
+		<servlet-name>Init</servlet-name>
+		<servlet-class>DAO.initServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Init</servlet-name>
+		<url-pattern>/init</url-pattern>
+	</servlet-mapping>
+
+	<!-- 分界线 -->
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>login.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/loginServlet</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- 分界线 -->
+	<servlet>
+		<servlet-name>LoginOutServlet</servlet-name>
+		<servlet-class>login.LoginOut</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginOutServlet</servlet-name>
+		<url-pattern>/loginOutServlet</url-pattern>
+	</servlet-mapping>
+
+
+
+	<!-- 配置错误信息 -->
+	<!-- <error-page> <error-code> 500 </error-code> <location>/common/error500.jsp</location> 
+		</error-page> <error-page> <error-code> 404 </error-code> <location>/common/error404.html</location> 
+		</error-page> -->
+
+
+
+	<!-- 过滤器 -->
+
+	<filter>
+		<filter-name>HelloFilter</filter-name>
+		<filter-class>Filter.HelloFilter</filter-class>
+	</filter>
+
+
+	<filter-mapping>
+		<filter-name>HelloFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+
+
+
+
+
+
+
+
+
+
+</web-app>
