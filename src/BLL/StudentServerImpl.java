@@ -3,9 +3,6 @@ package BLL;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import DAO.IStudentDao;
 import DAO.StudentDaoMysqlImpl;
 import DIYexception.NameRepeatE;

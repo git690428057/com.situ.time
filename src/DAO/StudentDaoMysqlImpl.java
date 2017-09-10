@@ -64,7 +64,7 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 		try {
 			connection = DBUtil.getConnection();
 			String sql=
-					"update student INNER JOIN classes on student.classid=classes.id set student.name = ?,student.age = ?, student.gender =?,student.address = ?,student.birthday = ?,classes.name=? where student.id=?";
+					"update student INNER JOIN class on student.classid=class.id set student.name = ?,student.age = ?, student.gender =?,student.address = ?,student.birthday = ?,class.name=? where student.id=?";
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, student.getName());
 			preparedStatement.setInt(2, student.getAge());
@@ -90,7 +90,7 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 		try {
 			Student student = new Student();
 			connection = DBUtil.getConnection();
-			String sql = "SELECT student.id,student.name,student.age,student.gender,student.address,student.birthday,classes.name FROM student INNER JOIN classes on student.classid=classes.id  AND student.id=?";
+			String sql = "SELECT student.id,student.name,student.age,student.gender,student.address,student.birthday,class.name FROM student INNER JOIN class on student.classid=class.id  AND student.id=?";
 //			String sql = "select * from Student where id = ?";
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, id);
@@ -103,7 +103,7 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 					String gender = resultSet.getString("student.gender");
 					String address = resultSet.getString("student.address");
 					Date birthday = resultSet.getDate("student.birthday");
-					String className = resultSet.getString("classes.name");
+					String className = resultSet.getString("class.name");
 					student = new Student(id1, name, age, gender, address, birthday,className);
 					studentsList.add(student);
 				}
@@ -311,7 +311,7 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 		List<Student> list = new ArrayList<Student>();
 		try {
 			connection = DBUtil.getConnection();
-			String sql = "SELECT student.*,classes.name FROM student INNER JOIN classes on student.classid=classes.id limit ?,?";
+			String sql = "SELECT student.*,class.name FROM student INNER JOIN class on student.classid=class.id limit ?,?";
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, index);
 			preparedStatement.setInt(2, pageSize);
@@ -323,7 +323,7 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 				String gender = resultSet.getString("student.gender");
 				String address = resultSet.getString("student.address");
 				Date birthday = resultSet.getDate("student.birthday");
-				String className = resultSet.getString("classes.name");
+				String className = resultSet.getString("class.name");
 				Student student = new Student(id, name, age, gender, address, birthday,className);
 				list.add(student);
 			}
@@ -349,7 +349,6 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 		}finally {
 			DBUtil.close(connection, preparedStatement, resultSet);
 		}
-		System.out.println(count);
 		return count;
 	}
 
