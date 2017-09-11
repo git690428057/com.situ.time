@@ -24,13 +24,14 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 		int result = 0;
 		try {
 			connection = DBUtil.getConnection();
-			String sql = "insert into Student(name,age,gender,address,birthday) values(?,?,?,?,?,?)";
+			String sql = "insert into Student(name,age,gender,address,birthday,classid) values(?,?,?,?,?,?)";
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, student.getName());
 			preparedStatement.setInt(2, student.getAge());
 			preparedStatement.setString(3, student.getGender());
 			preparedStatement.setString(4, student.getAddress());
 			preparedStatement.setDate(5, new java.sql.Date(student.getBirthday().getTime()));
+			preparedStatement.setInt(6, student.getClassId());
 			result = preparedStatement.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -289,6 +290,10 @@ public class StudentDaoMysqlImpl implements IStudentDao {
 				sql += " and student.birthday between ? and ? ";
 				list.add(searchCondition.getStartBirthday());
 				list.add(searchCondition.getEndBirthday());
+			}
+			if (!searchCondition.getClassName().isEmpty()) {
+				sql += " and student.classid = ? ";
+				list.add(searchCondition.getClassName());
 			}
 			preparedStatement = connection.prepareStatement(sql);
 			for (int i = 0; i < list.size(); i++) {

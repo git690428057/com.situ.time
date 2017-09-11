@@ -24,6 +24,11 @@
 	function edit () {
 		$("td[name=doedit]").css("border","none")
 		$("td[name=doedit]").css("display","inline")
+		$("button[name=cancelbutton]").css("display","inline")
+	}
+	function canceledit () {
+		$("button[name=cancelbutton]").css("display","none")
+		$("td[name=doedit]").css("display","none")
 	}
 </script> 
 </head>
@@ -53,7 +58,7 @@
 							<a href="${pageContext.request.contextPath}/student?method=getClass_CourseInformation"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;课程管理 </a>
 						</li>
 						<li>
-							<a href="#"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;教务管理</a>
+							<a href="${pageContext.request.contextPath}/student?method=getAdministration"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;教务管理</a>
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
@@ -101,7 +106,8 @@
 							<li role="presentation" class="active">
 								<a href="#home" aria-controls="home" role="tab" data-toggle="tab">班级列表</a>
 							</li>
-						<button class="btn btn-danger" onclick="edit();" style="float: right;">编辑</button>
+						   <button class="btn btn-warning" onclick="edit();" style="float: right;">编辑</button>
+						   <button class="btn btn-primary" name="cancelbutton" onclick="canceledit();" style="float: right;display: none;">取消编辑</button>
 						</ul>
 					</div>
 					<table class="table table-hover table-bordered">
@@ -126,6 +132,8 @@
 							</tr>
 						</c:forEach>
 					</table>
+					  <button class="btn btn-danger">删除该班级所选课程</button>
+					  <button class="btn btn-danger">修改该班级所选课程</button>
 				</div>
 			</div>
 		</div>

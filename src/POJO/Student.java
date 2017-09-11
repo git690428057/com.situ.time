@@ -11,6 +11,7 @@ public class Student implements Serializable {
 	private String gender;
 	private String address;
 	private Date birthday;
+	private int classId;
 	private String className;
 
 	public Student() {
@@ -25,6 +26,26 @@ public class Student implements Serializable {
 		this.birthday = birthday;
 		this.className = className;
 		this.id = id;
+	}
+
+	public int getClassId() {
+		return classId;
+	}
+
+	public void setClassId(int classId) {
+		this.classId = classId;
+	}
+
+	public Student( String name, int age, String gender, String address, Date birthday, int classId,
+			String className) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.gender = gender;
+		this.address = address;
+		this.birthday = birthday;
+		this.classId = classId;
+		this.className = className;
 	}
 
 	public String getClassName() {
@@ -151,7 +172,6 @@ public class Student implements Serializable {
 	}
 
 	public Student(int id2, String name2, int age2, String address2, Date birthday2) {
-		// TODO Auto-generated constructor stub
 	}
 	
 

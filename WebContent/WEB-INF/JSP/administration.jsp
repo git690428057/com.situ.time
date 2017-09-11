@@ -10,15 +10,7 @@
 <script src="${pageContext.request.contextPath}/jQuery/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/bootstrap-3.3.7-dist/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
 
-<script type="text/javascript">
-	function selectall() {
-		$("input[name=selectIds]").prop("checked",$("#selectAll").is(":checked"));
-	}
-	function deleteAll() {
-		$("#mainForm").attr("action","${pageContext.request.contextPath}/student?method=deleteAll");
-		$("#mainForm").submit();
-	}
-</script>
+
 </head>
 <body>
 
@@ -31,7 +23,7 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active">
+				<li>
 				    <a href="${pageContext.request.contextPath}/student?method=pageList">
 				       <span class="glyphicon glyphicon-user">
 				       </span>&nbsp;&nbsp;学生管理 
@@ -44,16 +36,16 @@
 				    </a>
 				</li>
 				<li>
-				     <a href="${pageContext.request.contextPath}/student?method=getClass_CourseInformation">
+				    <a href="${pageContext.request.contextPath}/student?method=getClass_CourseInformation">
 				       <span class="glyphicon glyphicon-list-alt">
 				       </span>&nbsp;&nbsp;课程管理
-				     </a>
+				    </a>
 			    </li>
-				<li>
-				      <a href="${pageContext.request.contextPath}/student?method=getAdministration">
+				<li class="active">
+				     <a href="${pageContext.request.contextPath}/student?method=getAdministration">
 				           <span class="glyphicon glyphicon-tags">
 				           </span>&nbsp;&nbsp;教务管理
-				      </a>
+				     </a>
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
@@ -87,22 +79,15 @@
 			<div class="col-md-2">
 				<div class="list-group">
 					<a href="${pageContext.request.contextPath}/student?method=pageList"
-						class="list-group-item active"> 学生管理 
+						class="list-group-item active"> 教务管理 
 					</a> 
-				    <a href="${pageContext.request.contextPath}/student?method=getAddPage"
-						class="list-group-item">学生添加
-				    </a>
 				</div>
 			</div>
 			<div class="col-md-10">
 				<div>
 					<ul class="nav nav-tabs" role="tablist">
 						<li role="presentation" class="active">
-						   <a href="${pageContext.request.contextPath}/student?method=pageList">学生列表
-						   </a>
-						</li>
-						<li role="presentation">
-						   <a href="${pageContext.request.contextPath}/student?method=getAddPage">学生添加
+						   <a href="${pageContext.request.contextPath}/student?method=pageList">教务管理 
 						   </a>
 						</li>
 					</ul>
@@ -235,4 +220,3 @@
 		</div>
 	</div>
 </body>
-</html>

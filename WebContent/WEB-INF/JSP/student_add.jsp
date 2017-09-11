@@ -48,7 +48,7 @@
 				     </a>
 			    </li>
 				<li>
-				      <a href="#">
+				      <a href="${pageContext.request.contextPath}/student?method=getAdministration">
 				           <span class="glyphicon glyphicon-tags">
 				           </span>&nbsp;&nbsp;教务管理
 				      </a>
@@ -139,7 +139,14 @@
 							<input type="text" class="form-control" name="birthday">
 						</div>
 					</div>
-					<input type="submit" value="添加">
+					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								班级 <select name="className">
+									  <option value="JAVA">JAVA
+									  <option value="HTML">HTML
+									  <option value="UI">UI
+								   </select>
+					</button>
+					<button class="btn btn-primary" type="submit">查询</button>
 			</div>
 			</form>
 		</div>

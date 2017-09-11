@@ -128,6 +128,15 @@ public class StudentServlet extends baseServlet.BaseServlet {
 		String gender = req.getParameter("gender");
 		String address = req.getParameter("address");
 		String birthday = req.getParameter("birthday");
+		String className = req.getParameter("className");
+		int classId = 0;
+		if (className.equals("JAVA")) {
+			classId = 1;
+		}else if (className.equals("HTML")) {
+			classId = 2;
+		}else if (className.equals("UI")) {
+			classId = 3;
+		}
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		java.util.Date date = null;
 		try {
@@ -135,7 +144,7 @@ public class StudentServlet extends baseServlet.BaseServlet {
 		} catch (java.text.ParseException e1) {
 			e1.printStackTrace();
 		}
-		Student student = new Student(name, Integer.parseInt(age), gender, address, date);
+		Student student = new Student(name, Integer.parseInt(age), gender, address, date,classId,className);
 		try {
 			studentServers.add(student);
 		} catch (NameRepeatE e) {
@@ -195,5 +204,9 @@ public class StudentServlet extends baseServlet.BaseServlet {
 		req.setAttribute("list", list);
 		req.getRequestDispatcher("/WEB-INF/JSP/class_courseInformation.jsp").forward(req, resp);
 	}
+	// 跳转教务管理页面
+		private void getAdministration(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+			req.getRequestDispatcher("/WEB-INF/JSP/administration.jsp").forward(req, resp);
+		}
 
 }
